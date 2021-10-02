@@ -6,8 +6,6 @@ package gg.scala.validate.provide
  */
 abstract class DataProvider<T> {
 
-    abstract fun fetchBasedOnId(id: String): T?
-
-    abstract fun endpoint(): String
+    abstract fun getType(): Class<T>
 
 }

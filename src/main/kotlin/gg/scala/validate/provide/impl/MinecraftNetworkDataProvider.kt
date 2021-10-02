@@ -7,13 +7,8 @@ import gg.scala.validate.provide.DataProvider
  * @author GrowlyX
  * @since 10/2/2021
  */
-class MinecraftNetworkDataProvider : DataProvider<MinecraftNetworkData>() {
+object MinecraftNetworkDataProvider : DataProvider<MinecraftNetworkData>() {
 
-    override fun fetchBasedOnId(id: String): MinecraftNetworkData? {
-        return null
-    }
+    override fun getType(): Class<MinecraftNetworkData> = MinecraftNetworkData::class.java
 
-    override fun endpoint(): String {
-        TODO("Not yet implemented")
-    }
 }

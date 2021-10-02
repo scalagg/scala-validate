@@ -1,9 +1,12 @@
 package gg.scala.validate.model
 
+import kotlinx.serialization.Serializable
+
 /**
  * @author GrowlyX
  * @since 10/2/2021
  */
+@Serializable
 data class MinecraftNetworkData(
     val serverName: String,
 
