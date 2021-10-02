@@ -2,6 +2,7 @@ package gg.scala.validate
 
 import com.xenomachina.argparser.ArgParser
 import gg.scala.validate.storage.StorageProvider
+import gg.scala.validate.storage.supply.impl.MinecraftNetworkDataSupplier
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.response.*
@@ -21,7 +22,10 @@ fun main(args: Array<String>) {
                 json()
             }
 
-            StorageProvider.initialLoad(it)
+            ValidateConstants.args = it
+
+            StorageProvider.initialLoad()
+            MinecraftNetworkDataSupplier.init()
 
             routing {
                 for (provider in StorageProvider.dataProviders) {
@@ -41,7 +45,7 @@ fun main(args: Array<String>) {
                     }
                 }
 
-                // TODO: 10/2/2021 add post handling w/ security 
+                // TODO: 10/2/2021 add post handling w/ security
             }
         }.start(wait = true)
     }

@@ -9,6 +9,9 @@ import kotlinx.serialization.Serializable
 object ValidateConstants {
 
     @JvmStatic
+    lateinit var args: KtorValidateArgs
+
+    @JvmStatic
     val INVALID_NO_RESULT = Response(
         "INVALID",
         "No result was found."

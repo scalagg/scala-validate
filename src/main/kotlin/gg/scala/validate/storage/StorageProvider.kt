@@ -1,8 +1,11 @@
 package gg.scala.validate.storage
 
+import com.google.gson.Gson
 import com.solexgames.datastore.commons.connection.impl.mongo.UriMongoConnection
 import com.solexgames.datastore.commons.layer.impl.MongoStorageLayer
 import gg.scala.validate.KtorValidateArgs
+import gg.scala.validate.ValidateConstants
+import gg.scala.validate.model.MinecraftNetworkData
 import gg.scala.validate.provide.DataProvider
 import gg.scala.validate.provide.impl.MinecraftNetworkDataProvider
 import gg.scala.validate.storage.supply.StorageSupplier
@@ -18,18 +21,20 @@ object StorageProvider {
 
     val layerMap = mutableMapOf<String, MongoStorageLayer<*>>()
 
-    fun initialLoad(args: KtorValidateArgs) {
+    fun initialLoad() {
         dataProviders["minecraft"] = MinecraftNetworkDataProvider
 
-        loadMongoResources(args)
+        loadMongoResources()
     }
 
-    private fun loadMongoResources(args: KtorValidateArgs) {
-        val mongoConnection = UriMongoConnection(args.mongoUri)
+    private fun loadMongoResources() {
+        val mongoConnection = UriMongoConnection(
+            ValidateConstants.args.mongoUri
+        )
 
         dataProviders.forEach {
             layerMap[it.key] = MongoStorageLayer(
-                mongoConnection, it.key, "scala_validate", it.value.getType()
+                mongoConnection, "Scala", it.key, it.value.getType()
             )
         }
     }
