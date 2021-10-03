@@ -1,7 +1,7 @@
-package gg.scala.validate.storage.supply.impl
+package gg.scala.validate.storage.supplier.impl
 
 import gg.scala.validate.model.MinecraftNetworkData
-import gg.scala.validate.storage.supply.StorageSupplier
+import gg.scala.validate.storage.supplier.StorageSupplier
 
 /**
  * @author GrowlyX

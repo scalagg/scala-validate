@@ -1,9 +1,8 @@
-package gg.scala.validate.storage.supply
+package gg.scala.validate.storage.supplier
 
 import com.solexgames.datastore.commons.connection.impl.mongo.UriMongoConnection
 import com.solexgames.datastore.commons.layer.impl.MongoStorageLayer
-import gg.scala.validate.ValidateConstants
-import gg.scala.validate.model.MinecraftNetworkData
+import gg.scala.validate.mongoUri
 
 /**
  * @author GrowlyX
@@ -19,9 +18,7 @@ abstract class StorageSupplier<T> {
     abstract fun lateInit()
 
     fun init() {
-        val mongoConnection = UriMongoConnection(
-            ValidateConstants.args.mongoUri
-        )
+        val mongoConnection = UriMongoConnection(mongoUri)
 
         this.layer = MongoStorageLayer(
             mongoConnection, "Scala",

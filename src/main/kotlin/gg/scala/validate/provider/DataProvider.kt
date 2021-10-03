@@ -1,4 +1,4 @@
-package gg.scala.validate.provide
+package gg.scala.validate.provider
 
 /**
  * @author GrowlyX
