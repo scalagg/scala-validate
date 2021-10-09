@@ -1,6 +1,6 @@
 package gg.scala.validate.plugins
 
-import gg.scala.validate.storageProvider
+import gg.scala.validate.storage.StorageProvider
 import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.response.*
@@ -8,9 +8,9 @@ import io.ktor.routing.*
 
 fun Application.configureRouting() {
     routing {
-        for (provider in storageProvider.dataProviders) {
+        for (provider in StorageProvider.dataProviders) {
             get("/routing/${provider.key}/{id}") {
-                val layer = storageProvider.layerMap[provider.key]
+                val layer = StorageProvider.layerMap[provider.key]
 
                 if (layer == null) {
                     call.respond(HttpStatusCode.Conflict, "An internal error occurred while fetching the result.")

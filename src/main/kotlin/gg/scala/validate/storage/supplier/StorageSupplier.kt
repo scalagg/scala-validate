@@ -2,13 +2,14 @@ package gg.scala.validate.storage.supplier
 
 import com.solexgames.datastore.commons.connection.impl.mongo.UriMongoConnection
 import com.solexgames.datastore.commons.layer.impl.MongoStorageLayer
-import gg.scala.validate.mongoUri
+import gg.scala.validate.Constants
 
 /**
  * @author GrowlyX
  * @since 10/2/2021
  */
-abstract class StorageSupplier<T> {
+abstract class StorageSupplier<T>
+{
 
     protected lateinit var layer: MongoStorageLayer<T>
 
@@ -17,12 +18,15 @@ abstract class StorageSupplier<T> {
 
     abstract fun lateInit()
 
-    fun init() {
-        val mongoConnection = UriMongoConnection(mongoUri)
+    fun init()
+    {
+        val mongoConnection = UriMongoConnection(
+            Constants.settings.mongoUri
+        )
 
         this.layer = MongoStorageLayer(
             mongoConnection, "Scala",
-            "minecraft", getType()
+            getId(), getType()
         )
 
         lateInit()

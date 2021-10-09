@@ -7,18 +7,15 @@ import gg.scala.validate.storage.StorageProvider
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 
-lateinit var mongoUri: String
-val storageProvider = StorageProvider()
-
 fun main(args: Array<String>) {
     ArgParser(args).parseInto(::KtorValidateArgs).let {
-        mongoUri = it.mongoUri
+        Constants.settings = it
 
         embeddedServer(Netty, port = it.port.toInt(), host = it.host) {
             configureRouting()
             configureDataSupplier()
 
-            println("Monkey v1.0.0 has been enabled.")
+            StorageProvider.loadMongoResources()
         }.start(wait = true)
     }
 }
