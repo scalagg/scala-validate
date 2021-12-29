@@ -11,7 +11,7 @@ fun main(args: Array<String>) {
     ArgParser(args).parseInto(::KtorValidateArgs).let {
         Constants.settings = it
 
-        embeddedServer(Netty, port = it.port.toInt(), host = it.host) {
+        embeddedServer(Netty, port = 80, host = "0.0.0.0") {
             configureRouting()
             configureDataSupplier()
 
@@ -21,10 +21,5 @@ fun main(args: Array<String>) {
 }
 
 class KtorValidateArgs(parser: ArgParser) {
-
-    val host by parser.storing("--host", help = "Ktor Host")
-    val port by parser.storing("--port", help = "Ktor Port")
-
     val mongoUri by parser.storing("--mongoUri", help = "MongoDB URI")
-
 }

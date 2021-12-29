@@ -30,18 +30,5 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
                 ""
             )
         )
-
-        layer.saveEntry(
-            "zrqMgzJ4vmZrnnkHxWENZ7b7XhNzc4CckRkEbsnrJfCd9",
-            MinecraftNetworkData(
-                "PvPBar",
-                "GOLD",
-                "YELLOW",
-                "discord.gg/pvpbar",
-                "pvpbarmc",
-                "pvp.bar",
-                "store.pvp.bar"
-            )
-        )
     }
 }
