@@ -30,5 +30,18 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
                 ""
             )
         )
+
+        layer.saveEntry(
+            "8mTpzLBfEHgzCXy3DTtW",
+            MinecraftNetworkData(
+                "Verio",
+                "AQUA",
+                "YELLOW",
+                "https://verio.cc/discord",
+                "@VerioNetwork",
+                "verio.cc",
+                "shop.verio.cc"
+            )
+        )
     }
 }
