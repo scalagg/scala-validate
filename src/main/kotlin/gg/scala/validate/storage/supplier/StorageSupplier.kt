@@ -2,7 +2,7 @@ package gg.scala.validate.storage.supplier
 
 import com.solexgames.datastore.commons.connection.impl.mongo.UriMongoConnection
 import com.solexgames.datastore.commons.layer.impl.MongoStorageLayer
-import gg.scala.validate.Constants
+import gg.scala.validate.address
 
 /**
  * @author GrowlyX
@@ -10,7 +10,6 @@ import gg.scala.validate.Constants
  */
 abstract class StorageSupplier<T>
 {
-
     protected lateinit var layer: MongoStorageLayer<T>
 
     abstract fun getType(): Class<T>
@@ -20,9 +19,8 @@ abstract class StorageSupplier<T>
 
     fun init()
     {
-        val mongoConnection = UriMongoConnection(
-            Constants.settings.mongoUri
-        )
+        val mongoConnection =
+            UriMongoConnection(address)
 
         this.layer = MongoStorageLayer(
             mongoConnection, "Scala",
@@ -31,5 +29,4 @@ abstract class StorageSupplier<T>
 
         lateInit()
     }
-
 }

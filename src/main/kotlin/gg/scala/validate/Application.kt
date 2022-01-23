@@ -1,25 +1,31 @@
 package gg.scala.validate
 
-import com.xenomachina.argparser.ArgParser
 import gg.scala.validate.plugins.configureDataSupplier
 import gg.scala.validate.plugins.configureRouting
 import gg.scala.validate.storage.StorageProvider
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.net.URL
+
+lateinit var address: String
 
 fun main(args: Array<String>) {
-    ArgParser(args).parseInto(::KtorValidateArgs).let {
-        Constants.settings = it
+    embeddedServer(Netty, port = 21, host = "0.0.0.0") {
+        val ipAddress = URL("http://checkip.amazonaws.com")
 
-        embeddedServer(Netty, port = 80, host = "0.0.0.0") {
-            configureRouting()
-            configureDataSupplier()
+        val reader = BufferedReader(
+            InputStreamReader(
+                ipAddress.openStream()
+            )
+        )
 
-            StorageProvider.loadMongoResources()
-        }.start(wait = true)
-    }
-}
+        address = reader.readLine()
 
-class KtorValidateArgs(parser: ArgParser) {
-    val mongoUri by parser.storing("--mongoUri", help = "MongoDB URI")
+        configureRouting()
+        configureDataSupplier()
+
+        StorageProvider.loadMongoResources()
+    }.start(wait = true)
 }

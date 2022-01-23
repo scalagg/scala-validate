@@ -8,7 +8,5 @@ import gg.scala.validate.provider.DataProvider
  * @since 10/2/2021
  */
 object MinecraftNetworkDataProvider : DataProvider<MinecraftNetworkData>() {
-
     override fun getType(): Class<MinecraftNetworkData> = MinecraftNetworkData::class.java
-
 }

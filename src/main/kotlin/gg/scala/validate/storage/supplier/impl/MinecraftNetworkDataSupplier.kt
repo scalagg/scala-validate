@@ -40,7 +40,7 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
                 "https://verio.cc/discord",
                 "@VerioNetwork",
                 "verio.cc",
-                "shop.verio.cc"
+                "store.verio.cc"
             )
         )
     }

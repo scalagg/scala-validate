@@ -2,10 +2,12 @@ package gg.scala.validate.storage
 
 import com.solexgames.datastore.commons.connection.impl.mongo.UriMongoConnection
 import com.solexgames.datastore.commons.layer.impl.MongoStorageLayer
-import gg.scala.validate.Constants
+import gg.scala.validate.address
 import gg.scala.validate.provider.DataProvider
 import gg.scala.validate.provider.impl.MinecraftNetworkDataProvider
-import gg.scala.validate.storage.supplier.StorageSupplier
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.net.URL
 
 /**
  * @author GrowlyX
@@ -13,7 +15,6 @@ import gg.scala.validate.storage.supplier.StorageSupplier
  */
 object StorageProvider
 {
-
     val dataProviders = mutableMapOf<String, DataProvider<*>>()
     val layerMap = mutableMapOf<String, MongoStorageLayer<*>>()
 
@@ -24,8 +25,9 @@ object StorageProvider
 
     fun loadMongoResources()
     {
+        // lmao
         val mongoConnection = UriMongoConnection(
-            Constants.settings.mongoUri
+            "mongodb://$address:27017/admin"
         )
 
         dataProviders.forEach {
@@ -34,5 +36,4 @@ object StorageProvider
             )
         }
     }
-
 }
