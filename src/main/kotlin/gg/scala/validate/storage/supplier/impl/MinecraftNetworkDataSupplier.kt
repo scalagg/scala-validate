@@ -43,5 +43,19 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
                 "store.verio.cc"
             )
         )
+        
+
+        layer.saveEntry(
+            "FUMY7abwBte8VqEE",
+            MinecraftNetworkData(
+                "Cronos",
+                "DARK_PURPLE",
+                "PURPLE",
+                "discord.gg/cronos",
+                "@CronosNet",
+                "cronos.gg",
+                "store.cronos.gg"
+            )
+        )
     }
 }
