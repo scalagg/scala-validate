@@ -10,16 +10,14 @@ fun Application.configureRouting() {
     routing {
         for (provider in StorageProvider.dataProviders) {
             get("/routing/${provider.key}/{id}") {
-                val layer = StorageProvider.layerMap[provider.key]
+                val layer = StorageProvider.suppliers[provider.key]
 
                 if (layer == null) {
                     call.respond(HttpStatusCode.Conflict, "An internal error occurred while fetching the result.")
                     return@get
                 }
 
-                val fromStorage = layer.fetchEntryByKeySync(
-                    call.parameters["id"]
-                )
+                val fromStorage = layer.layer[call.parameters["id"]]
 
                 if (fromStorage == null) {
                     call.respond(HttpStatusCode.NotFound, "No result was found.")

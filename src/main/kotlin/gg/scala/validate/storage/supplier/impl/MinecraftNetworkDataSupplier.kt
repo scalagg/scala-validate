@@ -17,45 +17,36 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
         return "minecraft"
     }
 
-    override fun lateInit() {
-        layer.saveEntry(
-            "mcEX7vHSmcQqU35dtRNT5RVA4Qsa73bDWgGbB6juxkbZd",
-            MinecraftNetworkData(
-                "Scala",
-                "GREEN",
-                "YELLOW",
-                "",
-                "scalagg",
-                "scala.gg",
-                ""
-            )
+    init
+    {
+        layer["8mTpzLBfEHgzCXy3DTtW"] = MinecraftNetworkData(
+            "Verio",
+            "AQUA",
+            "YELLOW",
+            "https://verio.cc/discord",
+            "@VerioNetwork",
+            "verio.cc",
+            "store.verio.cc"
         )
 
-        layer.saveEntry(
-            "8mTpzLBfEHgzCXy3DTtW",
-            MinecraftNetworkData(
-                "Verio",
-                "AQUA",
-                "YELLOW",
-                "https://verio.cc/discord",
-                "@VerioNetwork",
-                "verio.cc",
-                "store.verio.cc"
-            )
+        layer["mcEX7vHSmcQqU35dtRNT5RVA4Qsa73bDWgGbB6juxkbZd"] = MinecraftNetworkData(
+            "Scala",
+            "GREEN",
+            "YELLOW",
+            "",
+            "scalagg",
+            "scala.gg",
+            ""
         )
-        
 
-        layer.saveEntry(
-            "FUMY7abwBte8VqEE",
-            MinecraftNetworkData(
-                "Cronos",
-                "DARK_PURPLE",
-                "PURPLE",
-                "discord.gg/cronos",
-                "@CronosNet",
-                "cronos.gg",
-                "store.cronos.gg"
-            )
+        layer["8mTpzLBfEHgzCXy3DTtW"] = MinecraftNetworkData(
+            "Glade",
+            "AQUA",
+            "YELLOW",
+            "discord.gg/fMAEnrxQUJ",
+            "@GladeNetwork",
+            "glade.gg",
+            "store.glade.gg"
         )
     }
 }
