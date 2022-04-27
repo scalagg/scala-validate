@@ -16,5 +16,5 @@ data class MinecraftNetworkData(
     val discord: String,
     val twitter: String,
     val domain: String,
-    val store: String,
+    val store: String
 )
