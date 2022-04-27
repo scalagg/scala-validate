@@ -23,6 +23,7 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
             "Verio",
             "AQUA",
             "YELLOW",
+            "DARK_AQUA",
             "https://verio.cc/discord",
             "@VerioNetwork",
             "verio.cc",
@@ -33,16 +34,18 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
             "Scala",
             "GREEN",
             "YELLOW",
-            "",
+            "GRAY",
+            "scala.gg/discord",
             "scalagg",
             "scala.gg",
-            ""
+            "store.scala.gg"
         )
 
         layer["8mTpzLBfEHgzCXy3DTtW"] = MinecraftNetworkData(
             "Glade",
             "AQUA",
             "YELLOW",
+            "DARK_AQUA",
             "discord.gg/fMAEnrxQUJ",
             "@GladeNetwork",
             "glade.gg",

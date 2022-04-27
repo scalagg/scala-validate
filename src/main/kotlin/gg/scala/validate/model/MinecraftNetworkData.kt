@@ -12,6 +12,7 @@ data class MinecraftNetworkData(
 
     val primary: String,
     val secondary: String,
+    val neutral: String,
 
     val discord: String,
     val twitter: String,
