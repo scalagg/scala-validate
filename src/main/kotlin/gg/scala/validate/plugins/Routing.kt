@@ -4,6 +4,7 @@ import gg.scala.validate.storage.StorageProvider
 import io.ktor.application.*
 import io.ktor.response.*
 import io.ktor.routing.*
+import kotlin.random.Random
 
 fun Application.configureRouting() {
     routing {
@@ -12,13 +13,19 @@ fun Application.configureRouting() {
         }
 
         get("/v1/ping/{ping}") {
-            val query = call
-                .parameters["ping"]?.toLong()
-                ?: System.currentTimeMillis()
+            kotlin.runCatching {
+                val requested = call
+                    .parameters["ping"]?.toLong()
+                    ?: System.currentTimeMillis()
 
-            call.respond(
-                System.currentTimeMillis() - query
-            )
+                call.respond(
+                    System.currentTimeMillis() - requested
+                )
+            }.onFailure {
+                call.respond("69".repeat(
+                    Random.nextInt(2, 10)
+                ))
+            }
         }
 
         for (provider in StorageProvider.dataProviders) {
