@@ -7,7 +7,8 @@ import io.ktor.server.netty.*
 
 fun main(args: Array<String>) {
     embeddedServer(
-        Netty, port = 21, host = "0.0.0.0"
+        Netty, port = 8080,
+        host = "46.105.133.79"
     ) {
         configureRouting()
         configureDataSupplier()
