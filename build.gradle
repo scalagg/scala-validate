@@ -5,7 +5,7 @@ plugins {
     id "org.jetbrains.kotlin.plugin.serialization" version "1.7.0"
 }
 
-group "gg.scala"
+group "gg.scala.validate"
 version "0.0.4"
 
 application {
@@ -33,6 +33,8 @@ shadowJar {
     exclude "**/*.kotlin_metadata"
     exclude "**/*.kotlin_builtins"
     exclude "META-INF/"
+
+    archiveFileName.set("validate.jar")
 }
 
 tasks.build.dependsOn(shadowJar)
