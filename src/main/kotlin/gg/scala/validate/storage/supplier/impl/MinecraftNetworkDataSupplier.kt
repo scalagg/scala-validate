@@ -41,15 +41,26 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
             "store.scala.gg"
         )
 
-        layer["8mTpzLBfEHgzCXy3DTtW"] = MinecraftNetworkData(
-            "Glade",
-            "AQUA",
+        layer["WELPRkfpwerijmferikwJMF"] = MinecraftNetworkData(
+            "Muffinized",
             "YELLOW",
-            "DARK_AQUA",
-            "discord.gg/fMAEnrxQUJ",
-            "@GladeNetwork",
-            "glade.gg",
-            "store.glade.gg"
+            "WHITE",
+            "GRAY",
+            "discord.muffinized.net",
+            "Muffinized",
+            "muffinized.net",
+            "store.muffinized.net"
+        )
+
+        layer["8mTpzLBfEHgzCXy3DTtW"] = MinecraftNetworkData(
+            "PotPvP",
+            "GOLD",
+            "YELLOW",
+            "GREEN",
+            "potpvp.com/discord",
+            "@PotPvPServer",
+            "potpvp.com",
+            "store.potpvp.com"
         )
     }
 }

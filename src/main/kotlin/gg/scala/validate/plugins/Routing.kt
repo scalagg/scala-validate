@@ -6,7 +6,8 @@ import io.ktor.response.*
 import io.ktor.routing.*
 import kotlin.random.Random
 
-fun Application.configureRouting() {
+fun Application.configureRouting()
+{
     routing {
         get("/") {
             call.respond("gg.scala.validate.plugins.Routing.kt")
@@ -22,17 +23,21 @@ fun Application.configureRouting() {
                     System.currentTimeMillis() - requested
                 )
             }.onFailure {
-                call.respond("69".repeat(
-                    Random.nextInt(2, 10)
-                ))
+                call.respond(
+                    "69".repeat(
+                        Random.nextInt(2, 10)
+                    )
+                )
             }
         }
 
-        for (provider in StorageProvider.dataProviders) {
+        for (provider in StorageProvider.dataProviders)
+        {
             get("/v1/${provider.key}/{id}") {
                 val layer = StorageProvider.suppliers[provider.key]
 
-                if (layer == null) {
+                if (layer == null)
+                {
                     call.respond(
                         gg.scala.validate.model.InternalError("No layer was found.")
                     )
@@ -41,7 +46,8 @@ fun Application.configureRouting() {
 
                 val fromStorage = layer.layer[call.parameters["id"]]
 
-                if (fromStorage == null) {
+                if (fromStorage == null)
+                {
                     call.respond(
                         gg.scala.validate.model.InternalError("No result was found.")
                     )
