@@ -19,15 +19,15 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
 
     init
     {
-        layer["8mTpzLBfEHgzCXy3DTtW"] = MinecraftNetworkData(
-            "Verio",
-            "AQUA",
-            "YELLOW",
+        layer["EiojmWEOIDJmkwedjm"] = MinecraftNetworkData(
+            "Minequest",
             "DARK_AQUA",
-            "https://verio.cc/discord",
-            "@VerioNetwork",
-            "verio.cc",
-            "store.verio.cc"
+            "YELLOW",
+            "GRAY",
+            "https://discord.gg/minequestgg",
+            "@MinequestGG",
+            "minequest.gg",
+            "store.minequest.gg"
         )
 
         layer["mcEX7vHSmcQqU35dtRNT5RVA4Qsa73bDWgGbB6juxkbZd"] = MinecraftNetworkData(

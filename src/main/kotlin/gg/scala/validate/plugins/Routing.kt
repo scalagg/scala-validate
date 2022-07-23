@@ -13,6 +13,22 @@ fun Application.configureRouting()
             call.respond("gg.scala.validate.plugins.Routing.kt")
         }
 
+        get("/v1/client/pinned")
+        {
+            call.respond(
+                listOf(
+                    mapOf(
+                        "name" to "Scala Dev",
+                        "address" to "dev.scala.gg"
+                    ),
+                    mapOf(
+                        "name" to "Pot PvP",
+                        "address" to "tropic.gg"
+                    )
+                )
+            )
+        }
+
         get("/v1/ping/{ping}") {
             kotlin.runCatching {
                 val requested = call
