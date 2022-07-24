@@ -4,6 +4,7 @@ import gg.scala.validate.storage.StorageProvider
 import io.ktor.application.*
 import io.ktor.response.*
 import io.ktor.routing.*
+import java.io.File
 import kotlin.random.Random
 
 fun Application.configureRouting()
@@ -11,6 +12,15 @@ fun Application.configureRouting()
     routing {
         get("/") {
             call.respond("gg.scala.validate.plugins.Routing.kt")
+        }
+
+        val file = File(
+            "assets.zip"
+        )
+
+        get("/minequest/ZNhIaDhQUP/assets.zip")
+        {
+            call.respondFile(file)
         }
 
         get("/v1/client/pinned")
