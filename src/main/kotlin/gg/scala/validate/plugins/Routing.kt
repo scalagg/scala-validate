@@ -1,6 +1,7 @@
 package gg.scala.validate.plugins
 
 import gg.scala.validate.storage.StorageProvider
+import gg.scala.validate.storage.supplier.impl.MinecraftNetworkDataSupplier
 import gg.scala.validate.templates.AssetServerLogic
 import io.ktor.application.*
 import io.ktor.features.origin
@@ -13,8 +14,21 @@ import kotlin.random.Random
 fun Application.configureRouting()
 {
     routing {
+        var registeredAssets = 0
+
         get("/") {
-            call.respond("gg.scala.validate.plugins.Routing.kt")
+            call.respond(
+                mapOf(
+                    "assets" to mapOf(
+                        "status" to "OPERATIONAL",
+                        "count" to "$registeredAssets"
+                    ),
+                    "minecraft" to mapOf(
+                        "status" to "OPERATIONAL",
+                        "count" to "${MinecraftNetworkDataSupplier.layer.size}"
+                    )
+                )
+            )
         }
 
         val logic = AssetServerLogic
@@ -30,6 +44,8 @@ fun Application.configureRouting()
                 println("[Assets] ${asset.name} does not exist! Not publishing this route.")
                 continue
             }
+
+            registeredAssets += 1
 
             get("/delivery/${
                 if (template.authentication.enabled) "auth/" else ""
@@ -56,22 +72,6 @@ fun Application.configureRouting()
                     println("[Assets] Delivering ${template.data.fileName} to $address...")
                 }
             }
-        }
-
-        get("/v1/client/pinned")
-        {
-            call.respond(
-                listOf(
-                    mapOf(
-                        "name" to "Scala Dev",
-                        "address" to "dev.scala.gg"
-                    ),
-                    mapOf(
-                        "name" to "Pot PvP",
-                        "address" to "tropic.gg"
-                    )
-                )
-            )
         }
 
         get("/v1/ping/{ping}") {
