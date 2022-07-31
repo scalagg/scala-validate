@@ -58,15 +58,6 @@ fun Application.configureRouting()
             }
         }
 
-        val file = File(
-            "assets.zip"
-        )
-
-        get("/minequest/ZNhIaDhQUP/assets.zip")
-        {
-            call.respondFile(file)
-        }
-
         get("/v1/client/pinned")
         {
             call.respond(
