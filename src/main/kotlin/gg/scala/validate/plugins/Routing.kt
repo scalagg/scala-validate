@@ -1,7 +1,10 @@
 package gg.scala.validate.plugins
 
 import gg.scala.validate.storage.StorageProvider
+import gg.scala.validate.templates.AssetServerLogic
 import io.ktor.application.*
+import io.ktor.features.origin
+import io.ktor.http.HttpStatusCode
 import io.ktor.response.*
 import io.ktor.routing.*
 import java.io.File
@@ -12,6 +15,47 @@ fun Application.configureRouting()
     routing {
         get("/") {
             call.respond("gg.scala.validate.plugins.Routing.kt")
+        }
+
+        val logic = AssetServerLogic
+
+        for (template in logic.templates)
+        {
+            val asset = File(
+                "assets", template.data.fileName
+            )
+
+            if (!asset.exists())
+            {
+                println("[Assets] ${asset.name} does not exist! Not publishing this route.")
+                continue
+            }
+
+            get("/delivery/${
+                if (template.authentication.enabled) "auth/" else ""
+            }${template.endpoint}")
+            {
+                val address = call.request.headers["X-Forwarded-For"]
+                println("[Assets] $address is accessing ${template.endpoint}")
+
+                if (template.authentication.enabled)
+                {
+                    val whitelisted = template
+                        .authentication.ipWhitelist
+
+                    if (!whitelisted.contains(address))
+                    {
+                        return@get call.respond(
+                            HttpStatusCode.Unauthorized,
+                            mapOf("description" to "You are not permitted to view this asset.")
+                        )
+                    }
+                }
+
+                call.respondFile(asset) {
+                    println("[Assets] Delivering ${template.data.fileName} to $address...")
+                }
+            }
         }
 
         val file = File(
