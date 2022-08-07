@@ -3,11 +3,13 @@ package gg.scala.validate.plugins
 import gg.scala.validate.storage.StorageProvider
 import gg.scala.validate.storage.supplier.impl.MinecraftNetworkDataSupplier
 import gg.scala.validate.templates.AssetServerLogic
-import io.ktor.application.*
-import io.ktor.features.origin
+import io.ktor.application.Application
+import io.ktor.application.call
 import io.ktor.http.HttpStatusCode
-import io.ktor.response.*
-import io.ktor.routing.*
+import io.ktor.response.respond
+import io.ktor.response.respondFile
+import io.ktor.routing.get
+import io.ktor.routing.routing
 import java.io.File
 import kotlin.random.Random
 
@@ -35,21 +37,13 @@ fun Application.configureRouting()
 
         for (template in logic.templates)
         {
-            val asset = File(
-                "assets", template.data.fileName
-            )
-
-            if (!asset.exists())
-            {
-                println("[Assets] ${asset.name} does not exist! Not publishing this route.")
-                continue
-            }
-
             registeredAssets += 1
 
-            get("/delivery/${
-                if (template.authentication.enabled) "auth/" else ""
-            }${template.endpoint}")
+            get(
+                "/delivery/${
+                    if (template.authentication.enabled) "auth/" else ""
+                }${template.endpoint}"
+            )
             {
                 val address = call.request.headers["X-Forwarded-For"]
                 println("[Assets] $address is accessing ${template.endpoint}")
@@ -66,6 +60,52 @@ fun Application.configureRouting()
                             mapOf("description" to "You are not permitted to view this asset.")
                         )
                     }
+                }
+
+                var fileName = template.data.fileName
+
+                this.call.parameters.forEach { s, strings ->
+                    val firstOrNull = strings.firstOrNull()
+                        ?: return@forEach
+
+                    fileName = fileName.replace(
+                        "{$s}", firstOrNull
+                    )
+                }
+
+                var asset = if (template.data.inAssetsDirectory)
+                {
+                    File("assets", fileName)
+                } else
+                {
+                    File(fileName)
+                }
+
+                if (template.data.teamCity)
+                {
+                    val directory = File(fileName)
+                    val assetDirectory = directory.listFiles()!!
+                        .filter { it.isDirectory }
+                        .maxByOrNull {
+                            it.name.toInt()
+                        }
+                        ?: return@get call.respond(
+                            HttpStatusCode.NoContent,
+                            mapOf("description" to "Asset was not found internally.")
+                        )
+
+                    asset = File(assetDirectory, template.data.teamCityAsset)
+
+                    println("[Assets] Using build number: ${asset.parent}")
+                }
+
+                if (!asset.exists())
+                {
+                    call.respond(
+                        HttpStatusCode.NoContent,
+                        mapOf("description" to "Asset was not found internally.")
+                    )
+                    return@get
                 }
 
                 call.respondFile(asset) {

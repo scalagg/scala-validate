@@ -53,14 +53,14 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
         )
 
         layer["8mTpzLBfEHgzCXy3DTtW"] = MinecraftNetworkData(
-            "PotPvP",
+            "Tropic",
             "GOLD",
             "YELLOW",
             "GREEN",
-            "potpvp.com/discord",
-            "@PotPvPServer",
-            "potpvp.com",
-            "store.potpvp.com"
+            "tropic.gg/discord",
+            "@PlayTropic",
+            "tropic.gg",
+            "store.tropic.gg"
         )
     }
 }
