@@ -42,14 +42,14 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
         )
 
         layer["WELPRkfpwerijmferikwJMF"] = MinecraftNetworkData(
-            "Muffinized",
-            "YELLOW",
+            "Kyro",
+            "AQUA",
             "WHITE",
             "GRAY",
-            "discord.muffinized.net",
-            "Muffinized",
-            "muffinized.net",
-            "store.muffinized.net"
+            "discord.kyro.rip",
+            "KyroRip",
+            "kyro.rip",
+            "store.kyro.rip"
         )
 
         layer["8mTpzLBfEHgzCXy3DTtW"] = MinecraftNetworkData(

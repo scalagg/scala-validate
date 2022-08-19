@@ -11,6 +11,9 @@ import io.ktor.response.respondFile
 import io.ktor.routing.get
 import io.ktor.routing.routing
 import java.io.File
+import java.nio.file.Files
+import java.nio.file.attribute.FileTime
+import java.time.Instant
 import kotlin.random.Random
 
 fun Application.configureRouting()
@@ -38,6 +41,15 @@ fun Application.configureRouting()
         for (template in logic.templates)
         {
             registeredAssets += 1
+
+            val temp = File(template.data.fileName)
+
+            if (temp.exists())
+            {
+                Files.setLastModifiedTime(
+                    temp.toPath(), FileTime.from(Instant.now())
+                )
+            }
 
             get(
                 "/delivery/${
