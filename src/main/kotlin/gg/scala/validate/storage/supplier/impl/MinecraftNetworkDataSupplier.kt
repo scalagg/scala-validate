@@ -21,8 +21,8 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
     {
         layer["EiojmWEOIDJmkwedjm"] = MinecraftNetworkData(
             "Minequest",
+            "AQUA",
             "DARK_AQUA",
-            "YELLOW",
             "GRAY",
             "https://discord.gg/minequestgg",
             "@MinequestGG",
@@ -39,17 +39,6 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
             "scalagg",
             "scala.gg",
             "store.scala.gg"
-        )
-
-        layer["WELPRkfpwerijmferikwJMF"] = MinecraftNetworkData(
-            "Kyro",
-            "AQUA",
-            "WHITE",
-            "GRAY",
-            "discord.kyro.rip",
-            "KyroRip",
-            "kyro.rip",
-            "store.kyro.rip"
         )
 
         layer["8mTpzLBfEHgzCXy3DTtW"] = MinecraftNetworkData(
