@@ -32,24 +32,13 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
 
         layer["mcEX7vHSmcQqU35dtRNT5RVA4Qsa73bDWgGbB6juxkbZd"] = MinecraftNetworkData(
             "Scala",
-            "GREEN",
+            "GOLD",
             "YELLOW",
             "GRAY",
             "scala.gg/discord",
             "scalagg",
             "scala.gg",
             "store.scala.gg"
-        )
-
-        layer["8mTpzLBfEHgzCXy3DTtW"] = MinecraftNetworkData(
-            "Tropic",
-            "GOLD",
-            "YELLOW",
-            "GREEN",
-            "tropic.gg/discord",
-            "@PlayTropic",
-            "tropic.gg",
-            "store.tropic.gg"
         )
     }
 }
