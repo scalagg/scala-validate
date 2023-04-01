@@ -24,7 +24,7 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
             "AQUA",
             "DARK_AQUA",
             "GRAY",
-            "https://discord.gg/minequestgg",
+            "https://discord.gg/3xamrcrZUP",
             "@MinequestGG",
             "minequest.gg",
             "store.minequest.gg"
