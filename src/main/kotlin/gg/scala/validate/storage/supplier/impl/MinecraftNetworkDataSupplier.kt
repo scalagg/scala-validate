@@ -51,5 +51,15 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
             "scala.gg",
             "store.scala.gg"
         )
+
+        layer["ms3vCu3JaybCz0ATX9HUUHZe5P0ZUNXh"] = MinecraftNetworkData(
+            "Glade",
+            "AQUA",
+            "YELLOW",
+            "discord.gg/fMAEnrxQUJ",
+            "@GladeNetwork",
+            "glade.gg",
+            "store.glade.gg"
+        )
     }
 }
