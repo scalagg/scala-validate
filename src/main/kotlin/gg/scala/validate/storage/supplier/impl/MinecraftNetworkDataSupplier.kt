@@ -56,6 +56,7 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
             "Glade",
             "AQUA",
             "YELLOW",
+            "GRAY",
             "discord.gg/fMAEnrxQUJ",
             "@GladeNetwork",
             "glade.gg",
