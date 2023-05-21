@@ -55,7 +55,7 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
         layer["ms3vCu3JaybCz0ATX9HUUHZe5P0ZUNXh"] = MinecraftNetworkData(
             "Glade",
             "AQUA",
-            "YELLOW",
+            "DARK_AQUA",
             "GRAY",
             "discord.gg/fMAEnrxQUJ",
             "@GladeNetwork",
