@@ -41,6 +41,17 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
             "store.tropic.gg"
         )
 
+        layer["dewgs"] = MinecraftNetworkData(
+            "Duels",
+            "AQUA",
+            "WHITE",
+            "DARK_AQUA",
+            "https://discord.gg/BFt8m5UCch",
+            "@DuelsUS",
+            "duels.us",
+            "store.duels.us"
+        )
+
         layer["mcEX7vHSmcQqU35dtRNT5RVA4Qsa73bDWgGbB6juxkbZd"] = MinecraftNetworkData(
             "Scala",
             "GOLD",
