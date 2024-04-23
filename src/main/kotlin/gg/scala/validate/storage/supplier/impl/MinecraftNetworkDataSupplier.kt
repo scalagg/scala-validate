@@ -63,6 +63,17 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
             "store.scala.gg"
         )
 
+        layer["factions"] = MinecraftNetworkData(
+            "Factions",
+            "AQUA",
+            "DARK_AQUA",
+            "GRAY",
+            "discord.gg/factions",
+            "@CFac",
+            "factions.server.scala.gg",
+            "store.factions.server.scala.gg"
+        )
+
         layer["ms3vCu3JaybCz0ATX9HUUHZe5P0ZUNXh"] = MinecraftNetworkData(
             "Glade",
             "AQUA",
