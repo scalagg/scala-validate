@@ -84,5 +84,27 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
             "glade.gg",
             "store.glade.gg"
         )
+
+        layer["FvqE2JjH7rUCWfKb7ZhhkCgerLfnYbV6G"] = MinecraftNetworkData(
+            "Esta Land",
+            "RED",
+            "YELLOW",
+            "GRAY",
+            "https://discord.gg/jkKGRymQxQ",
+            "@EstaLandNetwork",
+            "esta.land",
+            "store.esta.land"
+        )
+
+        layer["solara"] = MinecraftNetworkData(
+            "Solara",
+            "YELLOW",
+            "GRAY",
+            "WHITE",
+            "https://discord.gg/nfSFFJsDmU",
+            "@playsolara",
+            "solara.gg",
+            "shop.solara.gg"
+        )
     }
 }
