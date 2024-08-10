@@ -101,10 +101,10 @@ object MinecraftNetworkDataSupplier : StorageSupplier<MinecraftNetworkData>() {
             "YELLOW",
             "GRAY",
             "WHITE",
-            "https://discord.gg/nfSFFJsDmU",
+            "discord.gg/playsolara",
             "@playsolara",
             "solara.gg",
-            "shop.solara.gg"
+            "store.solara.gg"
         )
     }
 }
