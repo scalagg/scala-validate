@@ -51,6 +51,32 @@ fun Application.configureRouting()
                 )
             }
 
+            if (template.data.teamCity && template.data.teamCityMetadataEndpoint != null)
+            {
+                get("/metadata/${template.data.teamCityMetadataEndpoint}") {
+                    var fileName = template.data.fileName
+
+                    this.call.parameters.forEach { s, strings ->
+                        val firstOrNull = strings.firstOrNull()
+                            ?: return@forEach
+
+                        fileName = fileName.replace(
+                            "{$s}", firstOrNull
+                        )
+                    }
+
+                    val directory = File(fileName)
+                    val assetDirectory = directory.listFiles()!!
+                        .filter { it.isDirectory }
+                        .maxByOrNull {
+                            it.name.toInt()
+                        }
+                        ?: return@get call.respond(HttpStatusCode.NotFound)
+
+                    call.respond(assetDirectory.name)
+                }
+            }
+
             get(
                 "/delivery/${
                     if (template.authentication.enabled) "auth/" else ""

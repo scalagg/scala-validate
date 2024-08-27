@@ -19,6 +19,7 @@ data class AssetServerData(
     val inAssetsDirectory: Boolean = true,
     val teamCity: Boolean = false,
     val teamCityAsset: String = "",
+    val teamCityMetadataEndpoint: String? = null,
     val fileName: String = "test-template.json"
 )
 
