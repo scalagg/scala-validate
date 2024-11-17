@@ -3,7 +3,9 @@ name: Build and Deploy Validate
 on:
   push:
     branches:
-      - main
+      - '*'
+    # Exclude 'dev' branch using the 'if' condition
+    if: github.ref != 'refs/heads/dev'
 
 jobs:
   build-and-deploy:
